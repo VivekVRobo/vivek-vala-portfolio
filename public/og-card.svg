@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f0e8"/>
+  <circle cx="930" cy="170" r="210" fill="#a9bbc4" opacity=".34"/>
+  <circle cx="1020" cy="420" r="250" fill="#d7c7ae" opacity=".38"/>
+  <circle cx="845" cy="405" r="145" fill="none" stroke="#343536" stroke-opacity=".14" stroke-width="2"/>
+  <text x="82" y="110" font-family="Arial, sans-serif" font-size="24" letter-spacing="5" fill="#686a66">ROBOTICS · AUTONOMY · INTELLIGENT SYSTEMS</text>
+  <text x="78" y="310" font-family="Arial, sans-serif" font-size="122" font-weight="500" letter-spacing="-7" fill="#242624">Vivek Vala.</text>
+  <text x="84" y="385" font-family="Arial, sans-serif" font-size="32" fill="#555753">Robotics &amp; Automation Engineer</text>
+  <text x="84" y="470" font-family="Arial, sans-serif" font-size="27" fill="#686a66">Systems that move between software and the physical world.</text>
+</svg>

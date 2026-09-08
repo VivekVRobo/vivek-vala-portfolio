@@ -1,0 +1,13 @@
+import React from 'react';
+import { Link } from '../router';
+import { usePortfolioContent } from '../hooks/usePortfolioContent';
+
+export default function AboutPage() {
+  const { site } = usePortfolioContent();
+  return <div className="inner-page">
+    <header className="page-hero page-hero--split"><div><span className="eyebrow">About / systems thinking</span><h1>Between the code and the machine.</h1><p>{site.intro}</p></div><aside className="page-hero-note">I’m most interested in projects where sensing, reasoning, actuation, testing, and human interaction have to work together.</aside></header>
+    <section className="editorial-grid"><article className="big-statement"><span>01</span><h2>I like complete loops.</h2><p>A robot is not only its controller. An intelligent assistant is not only its model. A PCB is not only its schematic. I care about the places where layers meet and constraints become visible.</p></article><article><span>02</span><h3>Build, inspect, iterate.</h3><p>I prefer repositories and case studies that show what exists, how it was tested, what is simulated, what is physical, and what still needs proof.</p></article><article><span>03</span><h3>Long-term direction.</h3><p>Robotics, embodied intelligence, autonomous machines, local-first AI systems, and advanced human-computer interaction are the areas I want to keep pushing toward.</p></article></section>
+    <section className="about-principles content-surface"><div className="section-head"><span className="chapter-kicker">How I work</span><h2>Four rules I keep returning to.</h2></div><div className="about-principles__grid"><article><span>01</span><strong>Trace claims to evidence.</strong><p>If a result is simulated, call it simulated. If hardware is not measured yet, say exactly what remains.</p></article><article><span>02</span><strong>Make boundaries explicit.</strong><p>Separate perception, planning, control, transport, safety, and interfaces so failures have somewhere to live.</p></article><article><span>03</span><strong>Prefer systems over isolated demos.</strong><p>I learn more when software, electronics, mechanics, and human interaction have to agree.</p></article><article><span>04</span><strong>Leave room for revision.</strong><p>Good architecture should accept better measurements and better models without rewriting the entire system.</p></article></div></section>
+    <section className="page-cta"><h2>See the work instead of taking my word for it.</h2><div className="hero-actions"><Link className="pill-button dark" to="/projects">Projects ↗</Link><Link className="pill-button" to="/skills">Skills</Link><Link className="pill-button" to="/experience">Experience</Link></div></section>
+  </div>;
+}

@@ -1,0 +1,4 @@
+import React from 'react';
+import { Link } from '../router';
+import { usePortfolioContent } from '../hooks/usePortfolioContent';
+export default function BlogPage(){const{blogPosts}=usePortfolioContent();return <div className="inner-page"><header className="page-hero"><span className="eyebrow">Engineering notes</span><h1>Things I learned while building.</h1><p>Short field notes about robotics, systems thinking, evidence, and intelligent software. These are not tutorials pretending to be papers; they are working notes from projects.</p></header><section className="notes-grid content-surface">{blogPosts.map((post,i)=><article key={post.slug}><span>{post.date}</span><h2>{post.title}</h2><p>{post.excerpt}</p><Link to={`/blog/${post.slug}`}>Read note ↗</Link><b>{String(i+1).padStart(2,'0')}</b></article>)}</section></div>}

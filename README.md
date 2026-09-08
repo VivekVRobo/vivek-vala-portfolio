@@ -1,5 +1,8 @@
 # Vivek Vala — Spatial Engineering Portfolio v6
 
+> **Live Production URL:** [https://vivek-vala-portfolio.vercel.app/](https://vivek-vala-portfolio.vercel.app/)  
+> **Status:** Production Deployed on Vercel Edge • Vite 7 + React 19 + Three.js
+
 A production-oriented, multi-page 3D engineering portfolio for Vivek Vala. v6 rebuilds the public experience around a restrained luxury visual system, smooth spatial scrolling, and dedicated pages instead of placing the whole portfolio on one homepage.
 
 ## Public architecture

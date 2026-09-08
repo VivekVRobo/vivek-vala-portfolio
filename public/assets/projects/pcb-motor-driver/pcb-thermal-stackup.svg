@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#121826" />
+    </linearGradient>
+    <linearGradient id="copperGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="fr4Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="heatFlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="60%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="580" fill="url(#bgGrad2)" rx="16" />
+  <rect width="998" height="578" x="1" y="1" fill="none" stroke="#1e293b" stroke-width="2" rx="15" />
+
+  <!-- Header -->
+  <text x="50" y="50" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700">2.0 OZ FINISHED COPPER &amp; 3×3 THERMAL VIA STACKUP</text>
+  <text x="50" y="74" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Multi-Layer Conjugate Heat Transfer Model · Effective θJA = 35.15 °C/W · 1.6 mm FR-4 Substrate</text>
+
+  <!-- Left: Cross-Section Diagram -->
+  <g transform="translate(60, 110)">
+    <rect width="480" height="420" fill="#0f172a" stroke="#334155" stroke-width="1.5" rx="12" />
+    <text x="24" y="32" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="1">PCB CROSS-SECTIONAL ARCHITECTURE</text>
+
+    <!-- DRV8848 IC Body -->
+    <rect x="140" y="60" width="200" height="40" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5" rx="6" />
+    <text x="165" y="85" fill="#e0e7ff" font-family="sans-serif" font-size="12" font-weight="700">DRV8848 Silicon Die (T_J)</text>
+
+    <!-- Exposed PowerPAD -->
+    <rect x="180" y="100" width="120" height="15" fill="#f59e0b" stroke="#d97706" stroke-width="1" />
+    <text x="195" y="112" fill="#78350f" font-family="sans-serif" font-size="10" font-weight="700">PowerPAD (2x3mm)</text>
+
+    <!-- Top Copper Layer (2.0 oz, 70 um) -->
+    <rect x="40" y="115" width="400" height="18" fill="url(#copperGrad)" stroke="#d97706" stroke-width="1" rx="3" />
+    <text x="50" y="128" fill="#451a03" font-family="sans-serif" font-size="10" font-weight="800">TOP LAYER: 2.0 oz Finished Copper (70 µm / 2.76 mil) — Ground Pour &amp; 60 mil Traces</text>
+
+    <!-- FR-4 Dielectric Substrate (1.6mm) -->
+    <rect x="40" y="133" width="400" height="150" fill="url(#fr4Grad)" stroke="#475569" stroke-width="1" />
+    <text x="175" y="215" fill="#64748b" font-family="sans-serif" font-size="13" font-weight="600">FR-4 Core (1.6 mm / 63 mil)</text>
+    <text x="180" y="235" fill="#475569" font-family="sans-serif" font-size="11">Tg = 140–150 °C | ε_r = 4.5</text>
+
+    <!-- 3x3 Plated Thermal Vias (Showing 3 in Cross-Section) -->
+    <g transform="translate(190, 133)">
+      <!-- Via 1 -->
+      <rect x="0" y="0" width="16" height="150" fill="#f59e0b" opacity="0.9" />
+      <rect x="3" y="0" width="10" height="150" fill="#0f172a" />
+      <!-- Via 2 -->
+      <rect x="42" y="0" width="16" height="150" fill="#f59e0b" opacity="0.9" />
+      <rect x="45" y="0" width="10" height="150" fill="#0f172a" />
+      <!-- Via 3 -->
+      <rect x="84" y="0" width="16" height="150" fill="#f59e0b" opacity="0.9" />
+      <rect x="87" y="0" width="10" height="150" fill="#0f172a" />
+      <!-- Label -->
+      <text x="-35" y="75" fill="#fbbf24" font-family="sans-serif" font-size="10" font-weight="700" transform="rotate(-90 -35 75)">9x Thermal Vias (0.3mm drill)</text>
+    </g>
+
+    <!-- Bottom Copper Layer (2.0 oz, 70 um) -->
+    <rect x="40" y="283" width="400" height="18" fill="url(#copperGrad)" stroke="#d97706" stroke-width="1" rx="3" />
+    <text x="50" y="296" fill="#451a03" font-family="sans-serif" font-size="10" font-weight="800">BOTTOM LAYER: 2.0 oz Solid Ground Plane (70 µm) — Primary Radiative Heat Dissipator</text>
+
+    <!-- Heat Dissipation Arrows -->
+    <g transform="translate(80, 315)">
+      <path d="M 50 0 L 50 25" stroke="#38bdf8" stroke-width="3" fill="none" />
+      <path d="M 150 0 L 150 35" stroke="#38bdf8" stroke-width="3" fill="none" />
+      <path d="M 250 0 L 250 35" stroke="#38bdf8" stroke-width="3" fill="none" />
+      <text x="75" y="60" fill="#7dd3fc" font-family="sans-serif" font-size="11" font-weight="600">Natural Convection &amp; Radiation into Chassis (h_eff = 15 W/m²K)</text>
+    </g>
+
+    <!-- Thermal Resistance Summary on Left -->
+    <rect x="30" y="385" width="420" height="25" fill="#1e293b" rx="4" />
+    <text x="40" y="402" fill="#cbd5e1" font-family="monospace" font-size="11">θ_JC(bot) = 2.1 °C/W  |  R_th(9vias) = 19.55 °C/W  |  R_th(plane) = 19.29 °C/W</text>
+  </g>
+
+  <!-- Right: Thermal Safety Proof & Calculations -->
+  <g transform="translate(570, 110)">
+    <rect width="370" height="420" fill="#131d2e" stroke="#334155" stroke-width="1.5" rx="12" />
+    <text x="24" y="32" fill="#10b981" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="1">DETERMINISTIC THERMAL PROOF</text>
+
+    <!-- Metric Card 1: Effective Theta-JA -->
+    <rect x="20" y="55" width="330" height="75" fill="#0f172a" stroke="#475569" stroke-width="1" rx="8" />
+    <text x="32" y="78" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="600">EFFECTIVE THERMAL RESISTANCE</text>
+    <text x="32" y="105" fill="#38bdf8" font-family="monospace" font-size="22" font-weight="800">θ_JA = 35.15 °C/W</text>
+    <text x="32" y="122" fill="#64748b" font-family="sans-serif" font-size="10">Standard 1 oz JEDEC reference: 40.20 °C/W (12.6% thermal improvement)</text>
+
+    <!-- Metric Card 2: Lab Junction Temp -->
+    <rect x="20" y="140" width="330" height="75" fill="#0f172a" stroke="#475569" stroke-width="1" rx="8" />
+    <text x="32" y="163" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="600">LAB BENCH (25°C AMBIENT, 1.80W LOAD)</text>
+    <text x="32" y="190" fill="#34d399" font-family="monospace" font-size="22" font-weight="800">T_J = 88.14 °C</text>
+    <text x="32" y="207" fill="#6ee7b7" font-family="sans-serif" font-size="10">+61.86 °C headroom below 150 °C max operating limit</text>
+
+    <!-- Metric Card 3: Extreme Industrial Junction Temp -->
+    <rect x="20" y="225" width="330" height="85" fill="#0f172a" stroke="#f59e0b" stroke-width="1" rx="8" />
+    <text x="32" y="248" fill="#fcd34d" font-family="sans-serif" font-size="11" font-weight="700">EXTREME INDUSTRIAL (50°C AMBIENT, 2.02W CORNER)</text>
+    <text x="32" y="278" fill="#fbbf24" font-family="monospace" font-size="22" font-weight="800">T_J = 120.90 °C</text>
+    <text x="32" y="298" fill="#fde68a" font-family="sans-serif" font-size="11" font-weight="600">+39.10 °C SAFETY BUFFER BELOW THERMAL SHUTDOWN (160°C)</text>
+
+    <!-- Metric Card 4: IPC-2152 Conductor Trace Ampacity -->
+    <rect x="20" y="320" width="330" height="80" fill="#0f172a" stroke="#6366f1" stroke-width="1" rx="8" />
+    <text x="32" y="343" fill="#c7d2fe" font-family="sans-serif" font-size="11" font-weight="600">IPC-2152 CONDUCTOR TRACE HEATING (60 MIL / 2 OZ)</text>
+    <text x="32" y="370" fill="#a5b4fc" font-family="monospace" font-size="18" font-weight="700">ΔT @ 1.0A = 0.22 °C  |  ΔT @ 3.0A = 2.67 °C</text>
+    <text x="32" y="388" fill="#94a3b8" font-family="sans-serif" font-size="10">Trace resistance: 4.03 mΩ · Voltage drop: 4.03 mV · Zero thermal fatigue</text>
+  </g>
+</svg>

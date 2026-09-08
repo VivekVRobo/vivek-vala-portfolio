@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pcbBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="boardSubstrate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="copperPad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="580" fill="url(#pcbBg)" rx="16" />
+  <rect width="998" height="578" x="1" y="1" fill="none" stroke="#1e293b" stroke-width="2" rx="15" />
+
+  <!-- Title Header -->
+  <text x="50" y="48" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700">CAD BOARD LAYOUT &amp; FABRICATION SPECIFICATION</text>
+  <text x="50" y="72" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Dimensions: 48.0 mm × 36.0 mm · 4× M3 Isolated Mounts · RS-274X Gerbers &amp; Excellon Drill Package</text>
+
+  <!-- Central PCB Physical Board Representation -->
+  <g transform="translate(100, 110)">
+    <!-- Board Substrate Outline -->
+    <rect width="480" height="360" fill="url(#boardSubstrate)" stroke="#10b981" stroke-width="2.5" rx="8" />
+
+    <!-- Silk Edge Coordinates -->
+    <text x="15" y="24" fill="#a7f3d0" font-family="monospace" font-size="11" font-weight="700">DRV8848 DUAL MOTOR DRIVER REV-A</text>
+    <text x="350" y="24" fill="#6ee7b7" font-family="monospace" font-size="10">48.0 x 36.0 mm</text>
+
+    <!-- 4x M3 Mounting Holes -->
+    <!-- Top-Left -->
+    <circle cx="25" cy="25" r="16" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+    <circle cx="25" cy="25" r="9" fill="#022c22" stroke="#64748b" stroke-width="1" />
+    <text x="45" y="30" fill="#94a3b8" font-family="sans-serif" font-size="9">M3 (3.2mm)</text>
+
+    <!-- Bottom-Left -->
+    <circle cx="25" cy="335" r="16" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+    <circle cx="25" cy="335" r="9" fill="#022c22" stroke="#64748b" stroke-width="1" />
+
+    <!-- Top-Right -->
+    <circle cx="455" cy="25" r="16" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+    <circle cx="455" cy="25" r="9" fill="#022c22" stroke="#64748b" stroke-width="1" />
+
+    <!-- Bottom-Right -->
+    <circle cx="455" cy="335" r="16" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+    <circle cx="455" cy="335" r="9" fill="#022c22" stroke="#64748b" stroke-width="1" />
+
+    <!-- Terminal J1 (Power Input) on Left Edge -->
+    <g transform="translate(15, 80)">
+      <rect width="50" height="70" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" rx="4" />
+      <circle cx="25" cy="20" r="6" fill="#fbbf24" />
+      <circle cx="25" cy="50" r="6" fill="#fbbf24" />
+      <text x="5" y="-6" fill="#7dd3fc" font-family="sans-serif" font-size="10" font-weight="700">J1: POWER</text>
+      <text x="60" y="24" fill="#f8fafc" font-family="monospace" font-size="10">VM (6-12V)</text>
+      <text x="60" y="54" fill="#f8fafc" font-family="monospace" font-size="10">GND</text>
+    </g>
+
+    <!-- Protection Block (Fuse & TVS) -->
+    <g transform="translate(100, 80)">
+      <rect width="25" height="50" fill="#0f172a" stroke="#ff5722" stroke-width="1" rx="2" />
+      <text x="-5" y="65" fill="#fb923c" font-family="sans-serif" font-size="9">F1 (3A)</text>
+
+      <rect x="35" y="0" width="25" height="50" fill="#0f172a" stroke="#eab308" stroke-width="1" rx="2" />
+      <text x="32" y="65" fill="#facc15" font-family="sans-serif" font-size="9">D1 (TVS)</text>
+    </g>
+
+    <!-- Bulk Cap C_BULK -->
+    <g transform="translate(180, 85)">
+      <circle cx="25" cy="25" r="24" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+      <text x="8" y="29" fill="#6ee7b7" font-family="monospace" font-size="9" font-weight="700">220µF</text>
+      <text x="0" y="62" fill="#a7f3d0" font-family="sans-serif" font-size="9">C_BULK (Hybrid)</text>
+    </g>
+
+    <!-- Central DRV8848 IC U1 -->
+    <g transform="translate(180, 180)">
+      <rect width="120" height="70" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" rx="4" />
+      <text x="18" y="26" fill="#e0e7ff" font-family="sans-serif" font-size="11" font-weight="700">TI DRV8848</text>
+      <text x="22" y="42" fill="#c7d2fe" font-family="monospace" font-size="9">HTSSOP-16</text>
+
+      <!-- 3x3 Thermal Vias -->
+      <g transform="translate(42, 48)">
+        <circle cx="0" cy="0" r="2.5" fill="#fbbf24" />
+        <circle cx="15" cy="0" r="2.5" fill="#fbbf24" />
+        <circle cx="30" cy="0" r="2.5" fill="#fbbf24" />
+        <circle cx="0" cy="10" r="2.5" fill="#fbbf24" />
+        <circle cx="15" cy="10" r="2.5" fill="#fbbf24" />
+        <circle cx="30" cy="10" r="2.5" fill="#fbbf24" />
+      </g>
+    </g>
+
+    <!-- Sense Resistors (2512 Package) -->
+    <g transform="translate(140, 270)">
+      <rect width="45" height="24" fill="#0f172a" stroke="#10b981" stroke-width="1" rx="2" />
+      <text x="8" y="16" fill="#6ee7b7" font-family="monospace" font-size="9">0.56Ω</text>
+      <text x="0" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">R_SENSE_A (2W)</text>
+    </g>
+    <g transform="translate(290, 270)">
+      <rect width="45" height="24" fill="#0f172a" stroke="#10b981" stroke-width="1" rx="2" />
+      <text x="8" y="16" fill="#6ee7b7" font-family="monospace" font-size="9">0.56Ω</text>
+      <text x="0" y="36" fill="#94a3b8" font-family="sans-serif" font-size="9">R_SENSE_B (2W)</text>
+    </g>
+
+    <!-- Motor Output Terminals J2 and J3 on Right Edge -->
+    <g transform="translate(415, 80)">
+      <rect width="50" height="70" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" rx="4" />
+      <circle cx="25" cy="20" r="6" fill="#fbbf24" />
+      <circle cx="25" cy="50" r="6" fill="#fbbf24" />
+      <text x="-40" y="-6" fill="#7dd3fc" font-family="sans-serif" font-size="10" font-weight="700">J2: MOTOR A</text>
+      <text x="-50" y="24" fill="#f8fafc" font-family="monospace" font-size="10">AOUT1</text>
+      <text x="-50" y="54" fill="#f8fafc" font-family="monospace" font-size="10">AOUT2</text>
+    </g>
+
+    <g transform="translate(415, 200)">
+      <rect width="50" height="70" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" rx="4" />
+      <circle cx="25" cy="20" r="6" fill="#fbbf24" />
+      <circle cx="25" cy="50" r="6" fill="#fbbf24" />
+      <text x="-40" y="-6" fill="#7dd3fc" font-family="sans-serif" font-size="10" font-weight="700">J3: MOTOR B</text>
+      <text x="-50" y="24" fill="#f8fafc" font-family="monospace" font-size="10">BOUT1</text>
+      <text x="-50" y="54" fill="#f8fafc" font-family="monospace" font-size="10">BOUT2</text>
+    </g>
+
+    <!-- Logic Header J4 along Bottom Edge -->
+    <g transform="translate(70, 310)">
+      <rect width="250" height="35" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" rx="4" />
+      <circle cx="25" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="50" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="75" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="100" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="125" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="150" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="175" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="200" cy="18" r="4" fill="#fbbf24" />
+      <circle cx="225" cy="18" r="4" fill="#fbbf24" />
+      <text x="30" y="-6" fill="#c084fc" font-family="sans-serif" font-size="10" font-weight="700">J4: 1x9 MICROCONTROLLER LOGIC HEADER</text>
+    </g>
+  </g>
+
+  <!-- Right: Fabrication & Test Points Summary -->
+  <g transform="translate(620, 110)">
+    <rect width="320" height="360" fill="#131d2e" stroke="#334155" stroke-width="1.5" rx="12" />
+    <text x="20" y="32" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="1">FABRICATION ORDER PARAMETERS</text>
+
+    <g transform="translate(20, 50)" font-family="sans-serif" font-size="11">
+      <text y="15" fill="#94a3b8">Dimensions:</text>
+      <text x="140" y="15" fill="#f8fafc" font-weight="700">48.0 × 36.0 mm</text>
+
+      <text y="40" fill="#94a3b8">Layer Count:</text>
+      <text x="140" y="40" fill="#f8fafc" font-weight="700">2 Layers (FR-4)</text>
+
+      <text y="65" fill="#94a3b8">Finished Copper:</text>
+      <text x="140" y="65" fill="#fbbf24" font-weight="800">2.0 oz (70 µm)</text>
+
+      <text y="90" fill="#94a3b8">Board Thickness:</text>
+      <text x="140" y="90" fill="#f8fafc">1.6 mm ± 10%</text>
+
+      <text y="115" fill="#94a3b8">Surface Finish:</text>
+      <text x="140" y="115" fill="#34d399" font-weight="700">Lead-Free HASL</text>
+
+      <text y="140" fill="#94a3b8">Min Trace / Space:</text>
+      <text x="140" y="140" fill="#f8fafc">8 / 8 mil (0.2 mm)</text>
+
+      <text y="165" fill="#94a3b8">Power Trace Width:</text>
+      <text x="140" y="165" fill="#38bdf8" font-weight="700">60 mil (1.524 mm)</text>
+
+      <text y="190" fill="#94a3b8">Min Drill Hole:</text>
+      <text x="140" y="190" fill="#f8fafc">0.3 mm (Thermal Vias)</text>
+
+      <text y="215" fill="#94a3b8">Solder Mask Color:</text>
+      <text x="140" y="215" fill="#f8fafc">Matte Black / Green</text>
+
+      <text y="240" fill="#94a3b8">Flying Probe Test:</text>
+      <text x="140" y="240" fill="#34d399" font-weight="700">100% Fully Tested</text>
+
+      <line x1="0" y1="255" x2="280" y2="255" stroke="#334155" stroke-width="1" />
+
+      <text y="275" fill="#f8fafc" font-weight="700">Verified Test Points (DMM / Scope):</text>
+      <text y="295" fill="#a5b4fc" font-family="monospace" font-size="10">TP_VM · TP_VINT · TP_VCP · TP_nFAULT</text>
+    </g>
+  </g>
+</svg>

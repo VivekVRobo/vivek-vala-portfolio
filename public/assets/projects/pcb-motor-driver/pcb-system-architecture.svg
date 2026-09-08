@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#121826" />
+    </linearGradient>
+    <linearGradient id="powerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff5722" />
+      <stop offset="100%" stop-color="#ff9800" />
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="motorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1000" height="580" fill="url(#bgGrad)" rx="16" />
+  <rect width="998" height="578" x="1" y="1" fill="none" stroke="#1e293b" stroke-width="2" rx="15" />
+
+  <!-- Title Header -->
+  <text x="50" y="50" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" letter-spacing="0.5">TI DRV8848 DUAL H-BRIDGE MOTOR DRIVER</text>
+  <text x="50" y="74" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Complete Electrical Architecture · 2-Layer 2.0 oz Copper · 6–12.6V DC Power Path</text>
+
+  <!-- Section: Power & Protection Stage -->
+  <g transform="translate(50, 110)">
+    <rect width="210" height="410" fill="#131d2e" stroke="#334155" stroke-width="1.5" rx="12" filter="url(#shadow)" />
+    <text x="20" y="32" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="1">1. PROTECTION &amp; BUS</text>
+
+    <!-- Terminal J1 -->
+    <rect x="20" y="55" width="170" height="55" fill="#0f172a" stroke="#475569" stroke-width="1" rx="8" />
+    <text x="32" y="78" fill="#f1f5f9" font-family="sans-serif" font-size="13" font-weight="600">Terminal J1 (Power)</text>
+    <text x="32" y="96" fill="#94a3b8" font-family="monospace" font-size="11">VM: 6–12.6V | GND</text>
+
+    <!-- Fuse F1 -->
+    <rect x="20" y="125" width="170" height="50" fill="#0f172a" stroke="#ff5722" stroke-width="1.5" rx="8" />
+    <text x="32" y="148" fill="#ffedd5" font-family="sans-serif" font-size="13" font-weight="600">Fuse F1: 3A Fast</text>
+    <text x="32" y="165" fill="#fb923c" font-family="monospace" font-size="11">Littelfuse 0451003 Nano2</text>
+
+    <!-- P-FET Reverse Polarity -->
+    <rect x="20" y="190" width="170" height="50" fill="#0f172a" stroke="#38bdf8" stroke-width="1" rx="8" />
+    <text x="32" y="213" fill="#e0f2fe" font-family="sans-serif" font-size="13" font-weight="600">Q_RPOL: P-MOSFET</text>
+    <text x="32" y="230" fill="#7dd3fc" font-family="monospace" font-size="11">SI2301CDS (-20V 70mΩ)</text>
+
+    <!-- TVS Diode -->
+    <rect x="20" y="255" width="170" height="50" fill="#0f172a" stroke="#eab308" stroke-width="1" rx="8" />
+    <text x="32" y="278" fill="#fef08a" font-family="sans-serif" font-size="13" font-weight="600">D_TVS: 15V Clamp</text>
+    <text x="32" y="295" fill="#fde047" font-family="monospace" font-size="11">Bourns SMAJ15A (400W)</text>
+
+    <!-- Capacitors -->
+    <rect x="20" y="320" width="170" height="65" fill="#0f172a" stroke="#10b981" stroke-width="1" rx="8" />
+    <text x="32" y="343" fill="#d1fae5" font-family="sans-serif" font-size="13" font-weight="600">Decoupling Array</text>
+    <text x="32" y="360" fill="#6ee7b7" font-family="monospace" font-size="11">C_BULK: 220µF Hybrid</text>
+    <text x="32" y="375" fill="#6ee7b7" font-family="monospace" font-size="11">C_LOCAL: 22µF + 0.1µF</text>
+  </g>
+
+  <!-- Power Flow Arrows to IC -->
+  <path d="M 260 250 L 330 250" stroke="#ff9800" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+  <text x="270" y="240" fill="#ffb74d" font-family="sans-serif" font-size="11" font-weight="600">VM Filtered</text>
+
+  <!-- Section: Central DRV8848 IC -->
+  <g transform="translate(340, 110)">
+    <rect width="320" height="410" fill="url(#chipGrad)" stroke="#4f46e5" stroke-width="2" rx="14" filter="url(#shadow)" />
+    <rect width="316" height="36" x="2" y="2" fill="#1e1b4b" rx="12" />
+    <text x="24" y="25" fill="#c7d2fe" font-family="sans-serif" font-size="13" font-weight="700" letter-spacing="1">2. TI DRV8848PWPR (HTSSOP-16)</text>
+
+    <!-- Exposed PowerPAD -->
+    <rect x="70" y="55" width="180" height="60" fill="#312e81" stroke="#818cf8" stroke-dasharray="4,4" stroke-width="1.5" rx="6" />
+    <text x="82" y="80" fill="#e0e7ff" font-family="sans-serif" font-size="12" font-weight="700">PowerPAD (Bottom)</text>
+    <text x="82" y="100" fill="#a5b4fc" font-family="monospace" font-size="11">3x3 Thermal Via Matrix</text>
+
+    <!-- Dual H-Bridges -->
+    <g transform="translate(20, 130)">
+      <rect width="130" height="110" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" rx="8" />
+      <text x="14" y="28" fill="#e0f2fe" font-family="sans-serif" font-size="12" font-weight="700">H-BRIDGE A</text>
+      <text x="14" y="50" fill="#94a3b8" font-family="monospace" font-size="11">HS: 0.45Ω P-FET</text>
+      <text x="14" y="70" fill="#94a3b8" font-family="monospace" font-size="11">LS: 0.45Ω N-FET</text>
+      <text x="14" y="95" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="600">Path: 0.90Ω @ 25°C</text>
+    </g>
+
+    <g transform="translate(170, 130)">
+      <rect width="130" height="110" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" rx="8" />
+      <text x="14" y="28" fill="#e0f2fe" font-family="sans-serif" font-size="12" font-weight="700">H-BRIDGE B</text>
+      <text x="14" y="50" fill="#94a3b8" font-family="monospace" font-size="11">HS: 0.45Ω P-FET</text>
+      <text x="14" y="70" fill="#94a3b8" font-family="monospace" font-size="11">LS: 0.45Ω N-FET</text>
+      <text x="14" y="95" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="600">Path: 0.90Ω @ 25°C</text>
+    </g>
+
+    <!-- Current Chopping Logic & Sense -->
+    <g transform="translate(20, 255)">
+      <rect width="280" height="135" fill="#0f172a" stroke="#10b981" stroke-width="1.5" rx="8" />
+      <text x="16" y="26" fill="#d1fae5" font-family="sans-serif" font-size="12" font-weight="700">CURRENT CHOPPING ENGINE</text>
+      <text x="16" y="48" fill="#6ee7b7" font-family="monospace" font-size="12">I_CHOP = VINT / (6.6 * R_ISEN)</text>
+      <text x="16" y="72" fill="#94a3b8" font-family="sans-serif" font-size="11">• VINT Reference: 3.30V (3.13–3.47V)</text>
+      <text x="16" y="92" fill="#94a3b8" font-family="sans-serif" font-size="11">• R_SENSE: 0.56Ω 2W 1% (Vishay WSL2512)</text>
+      <text x="16" y="115" fill="#34d399" font-family="sans-serif" font-size="11" font-weight="700">Regulated: 0.893A nom (0.948A max corner)</text>
+    </g>
+  </g>
+
+  <!-- Section: Output & MCU Interface -->
+  <g transform="translate(710, 110)">
+    <!-- Motor Terminals J2 and J3 -->
+    <rect width="240" height="195" fill="#131d2e" stroke="#334155" stroke-width="1.5" rx="12" filter="url(#shadow)" />
+    <text x="20" y="32" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="1">3. MOTOR OUTPUTS</text>
+
+    <!-- Terminal J2 -->
+    <rect x="20" y="55" width="200" height="55" fill="#0f172a" stroke="#0284c7" stroke-width="1" rx="8" />
+    <text x="32" y="78" fill="#e0f2fe" font-family="sans-serif" font-size="13" font-weight="600">Terminal J2: Motor A</text>
+    <text x="32" y="96" fill="#7dd3fc" font-family="monospace" font-size="11">AOUT1 / AOUT2 (1.0A Cont)</text>
+
+    <!-- Terminal J3 -->
+    <rect x="20" y="125" width="200" height="55" fill="#0f172a" stroke="#0284c7" stroke-width="1" rx="8" />
+    <text x="32" y="148" fill="#e0f2fe" font-family="sans-serif" font-size="13" font-weight="600">Terminal J3: Motor B</text>
+    <text x="32" y="166" fill="#7dd3fc" font-family="monospace" font-size="11">BOUT1 / BOUT2 (1.0A Cont)</text>
+
+    <!-- Logic Header J4 -->
+    <g transform="translate(0, 215)">
+      <rect width="240" height="195" fill="#131d2e" stroke="#334155" stroke-width="1.5" rx="12" filter="url(#shadow)" />
+      <text x="20" y="32" fill="#a855f7" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="1">4. MCU LOGIC HEADER (J4)</text>
+
+      <rect x="20" y="50" width="200" height="125" fill="#0f172a" stroke="#9333ea" stroke-width="1" rx="8" />
+      <text x="30" y="75" fill="#f3e8ff" font-family="monospace" font-size="11">Pin 1: AIN1 (PWM)  | Pin 2: AIN2</text>
+      <text x="30" y="95" fill="#f3e8ff" font-family="monospace" font-size="11">Pin 3: BIN1 (PWM)  | Pin 4: BIN2</text>
+      <text x="30" y="115" fill="#f3e8ff" font-family="monospace" font-size="11">Pin 5: nSLEEP (Safe Enable)</text>
+      <text x="30" y="135" fill="#f3e8ff" font-family="monospace" font-size="11">Pin 6: nFAULT (10k Pullup)</text>
+      <text x="30" y="155" fill="#a855f7" font-family="monospace" font-size="11">Pin 7: VREF | Pin 8: GND</text>
+    </g>
+  </g>
+
+  <!-- Output Connecting Lines -->
+  <path d="M 660 185 L 710 185" stroke="#38bdf8" stroke-width="3" fill="none" />
+  <path d="M 660 380 L 710 380" stroke="#a855f7" stroke-width="3" fill="none" />
+</svg>

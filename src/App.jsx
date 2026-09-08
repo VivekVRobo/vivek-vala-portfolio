@@ -3,6 +3,7 @@ import { useRouter } from './router';
 import Layout from './components/Layout';
 import ErrorBoundary from './components/ErrorBoundary';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
+import { Analytics } from '@vercel/analytics/react';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -75,5 +76,10 @@ export default function App() {
     window.setTimeout(() => document.getElementById('main')?.focus({ preventScroll: true }), 0);
   }, [path, seo, site]);
 
-  return <Layout route={path}><ErrorBoundary resetKey={path}><Suspense fallback={<LoadingRoute />}>{routeElement(path)}</Suspense></ErrorBoundary></Layout>;
+  return (
+    <>
+      <Layout route={path}><ErrorBoundary resetKey={path}><Suspense fallback={<LoadingRoute />}>{routeElement(path)}</Suspense></ErrorBoundary></Layout>
+      <Analytics />
+    </>
+  );
 }

@@ -38,7 +38,7 @@ const projectBase = [
   {
     slug: 'gesture-controlled-robotic-arm', index: '01', eyebrow: 'Robotics & Embedded Systems', title: 'Gesture-Controlled Robotic Arm', shortTitle: 'Gesture Arm',
     summary: 'A 5-DOF articulated robotic arm driven by custom Arduino kinematics firmware, nRF24L01 wireless telemetry, and a wearable IMU sensor glove, verified through continuous physical video actuation.',
-    tags: ['Arduino', 'C++', 'Robotics', 'nRF24L01 RF', 'Kinematics', 'MPU6050'], github: 'https://github.com/VivekVRobo/gesture-controlled-robotic-arm', live: '', docs: '', accent: 'clay', scene: 'gesture',
+    tags: ['Arduino', 'C++', 'Robotics', 'nRF24L01 RF', 'Kinematics', 'MPU6050'], github: 'https://github.com/VivekVRobo/gesture-controlled-robotic-arm', live: '', docs: 'https://github.com/VivekVRobo/gesture-controlled-robotic-arm/blob/main/README.md', accent: 'clay', scene: 'gesture',
     status: 'Verified physical hardware actuation & continuous video demo (Tier S · 85/100)',
     role: 'Embedded C++ firmware, complementary filter fusion, 4-bar parallel linkage kinematics, and servo actuation.',
     problem: 'Controlling multi-joint robotic arms with buttons or joysticks is unintuitive for untrained operators and lacks spatial mapping fidelity.',
@@ -80,7 +80,7 @@ const projectBase = [
   {
     slug: 'custom-pcb-motor-driver', index: '02', eyebrow: 'Electronics & Hardware Engineering', title: 'Custom PCB Motor Driver (TI DRV8848)', shortTitle: 'PCB Motor Driver',
     summary: 'A high-thermal-capacity dual H-bridge motor driver PCB for mobile robotics, featuring 2.0 oz finished copper, 3×3 PowerPAD thermal via array, deterministic current chopping, and full first-principles mathematical physics verification.',
-    tags: ['KiCad', 'PCB Design', 'DRV8848', 'Power Electronics', 'Thermal Physics', '2.0 oz Cu'], github: 'https://github.com/VivekVRobo/custom-pcb-motor-driver', live: '', docs: '', accent: 'sage', scene: 'pcb',
+    tags: ['KiCad', 'PCB Design', 'DRV8848', 'Power Electronics', 'Thermal Physics', '2.0 oz Cu'], github: 'https://github.com/VivekVRobo/custom-pcb-motor-driver', live: '', docs: 'https://github.com/VivekVRobo/custom-pcb-motor-driver/blob/main/docs/MATHEMATICAL_PHYSICS_PROOF.md', accent: 'sage', scene: 'pcb',
     status: 'Fabrication package ready · Mathematical physics proof certified (Tier S · 84/100)',
     role: 'Circuit schematic design, component selection, PCB layout, mathematical physics modeling, and design rule verification.',
     problem: 'Standard hobby motor shields lack adequate thermal dissipation, power filtering, and protection against inductive flyback and reverse polarity voltage spikes.',

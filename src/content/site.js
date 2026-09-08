@@ -324,6 +324,7 @@ const projectBase = [
 export const projects = projectBase.map((project, i) => ({ ...project, id: project.slug, featured: i < 6, published: true, order: i }));
 
 export const labProjects = [
+  { title: 'Aethel Visual Studio', meta: 'Ultra-Resolution Graphics, 8K Masters', status: 'Production Studio', detail: 'Dedicated visual art direction and ultra-resolution 8K master rendering pipeline for creators, games, and publishing.', live: 'https://aethel-visual-studio.vercel.app' },
   { title: 'Universal Brain', meta: 'Local Automation Engine', status: 'Active Development', detail: 'A local engine for coordinating Python scripts, desktop automation, and developer tools on Windows.' },
   { title: 'Native Desktop Pet', meta: 'Windows Desktop Animation', status: 'Prototype', detail: 'A transparent desktop character program with sprite animations, system tray controls, and status reminders.' },
   { title: 'Media Automation Pipeline', meta: 'Python, Playwright, Automation', status: 'Tool in Use', detail: 'An automated media processing and publishing tool with scheduled tasks, image resizing, and error logging.' },

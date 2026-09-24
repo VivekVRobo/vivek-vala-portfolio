@@ -3,7 +3,7 @@ import { Link, useRouter } from '../router';
 import { usePortfolioContent } from '../hooks/usePortfolioContent';
 import { useScenePreference } from '../hooks/useScenePreference';
 
-const links = [['Projects', '/projects'], ['Skills', '/skills'], ['Experience', '/experience'], ['Lab', '/lab'], ['About', '/about'], ['Notes', '/blog'], ['Contact', '/contact']];
+const links = [['Projects', '/projects'], ['Skills', '/skills'], ['Experience', '/experience'], ['About', '/about'], ['Notes', '/blog'], ['Contact', '/contact']];
 const activeFor = (path, to) => path === to || (to === '/projects' && path.startsWith('/projects/')) || (to === '/blog' && path.startsWith('/blog/'));
 
 export default function Navigation() {

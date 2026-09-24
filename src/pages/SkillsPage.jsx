@@ -7,8 +7,8 @@ const technicalGroups = [
     name: 'Robotics & Control',
     items: ['ROS 2', 'SLAM', 'Gazebo', 'Kinematics', 'PID control', 'Localization', 'LiDAR', 'Robot validation'],
     linkedProjects: [
-      { title: 'SLAM Robot (ROS 2)', slug: 'slam-robot-ros2' },
-      { title: '3-DOF Robotic Arm', slug: '3dof-robotic-arm' },
+      { title: 'SLAM Robot with ROS 2', slug: 'slam-robot-ros2' },
+      { title: '3 DOF Robotic Arm', slug: '3dof-robotic-arm' },
       { title: 'Line Following Robot', slug: 'line-following-robot' },
     ],
   },
@@ -17,7 +17,7 @@ const technicalGroups = [
     items: ['Arduino', 'Microcontrollers', 'PCA9685', 'Serial protocols', 'Motor control', 'KiCad', 'PCB reasoning', 'Hardware safety'],
     linkedProjects: [
       { title: 'Custom PCB Motor Driver', slug: 'custom-pcb-motor-driver' },
-      { title: '3-DOF Robotic Arm', slug: '3dof-robotic-arm' },
+      { title: '3 DOF Robotic Arm', slug: '3dof-robotic-arm' },
     ],
   },
   {
@@ -25,7 +25,7 @@ const technicalGroups = [
     items: ['OpenCV', 'MediaPipe', 'HSV pipelines', 'Computer vision', 'Gesture interaction', 'Sensor calibration'],
     linkedProjects: [
       { title: 'CV Object Sorter', slug: 'cv-object-sorter' },
-      { title: 'Gesture-Controlled Arm', slug: 'gesture-controlled-robotic-arm' },
+      { title: 'Gesture Controlled Robotic Arm', slug: 'gesture-controlled-robotic-arm' },
     ],
   },
   {
@@ -40,7 +40,7 @@ const technicalGroups = [
     items: ['Agent architecture', 'Memory systems', 'Tool orchestration', 'Local-first AI', 'Runtime contracts', 'Human-robot interaction'],
     linkedProjects: [
       { title: 'JARVIS Desktop Assistant', slug: 'jarvis' },
-      { title: 'Aurelia-chan Agent', slug: 'aurelia-chan' },
+      { title: 'Aurelia AI Runtime', slug: 'aurelia-chan' },
       { title: 'Robotic Character Interface', slug: 'robotic-character-interface' },
     ],
   },

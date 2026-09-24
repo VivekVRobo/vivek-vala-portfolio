@@ -19,7 +19,7 @@ export const site = {
     ['Hardware and Code', 'Complete System Builds'],
   ],
   heroCinema: {
-    enabled: true,
+    enabled: false,
     poster: '/hero-cinema-poster.webp',
     webm: '/hero-cinema.webm',
     mp4: '/hero-cinema.mp4',
@@ -72,7 +72,7 @@ const projectBase = [
     lessons: 'Filtering small hand tremors and providing dedicated servo power rails are essential to avoid mechanical chatter and controller brownouts.',
     future: 'Integrate multi-finger independent actuation and closed-loop force feedback on end-effector finger pads.',
     media: [
-      { type: 'video', url: '/assets/projects/gesture-arm/gesture-actuation-demo.mp4', label: 'Physical Actuation Demo', caption: 'Continuous uncut physical demonstration: gesture glove driving gripper opening/closing and base panning in real time.' },
+      { type: 'video', url: '/assets/projects/gesture-arm/gesture-actuation-demo.mp4', poster: '/assets/projects/gesture-arm/video-poster.jpg', label: 'Physical Actuation Demo', caption: 'Continuous uncut physical demonstration: gesture glove driving gripper opening/closing and base panning in real time.' },
       { type: 'image', url: '/assets/projects/gesture-arm/physical-hardware.jpg', label: 'Physical Hardware Bench', caption: 'Articulated arm on test bench showing 4-bar parallel linkage, servos, turntable base, and Arduino controller.' },
       { type: 'image', url: '/assets/projects/gesture-arm/electronics-overview.jpg', label: 'Electronics & Wiring', caption: 'Microcontroller, IMU sensor board, and servo harness breadboard wiring setup.' },
     ],
@@ -357,7 +357,7 @@ const projectBase = [
 export const projects = projectBase.map((project, i) => ({ ...project, id: project.slug, featured: i < 6, published: true, order: i }));
 
 export const labProjects = [
-  { title: 'Aethel Visual Studio', meta: 'High-Resolution Visual Art, 8K Masters', status: 'Production Studio', detail: 'Dedicated visual art direction and verified 4K/8K master workflow for creators, games, music, publishing, and brands.', live: 'https://aethel-visual-studio.vercel.app/' },
+  { title: 'Vexnaire Visual Studio', meta: 'High-Resolution Visual Art, 8K Masters', status: 'Production Studio', detail: 'Dedicated visual art direction and verified 4K/8K master workflow for creators, games, music, publishing, and brands.', live: 'https://vexnaire-visual-studio.vercel.app/' },
   { title: 'Universal Brain', meta: 'Local Automation Engine', status: 'Active Development', detail: 'A local engine for coordinating Python scripts, desktop automation, and developer tools on Windows.' },
   { title: 'Native Desktop Pet', meta: 'Windows Desktop Animation', status: 'Prototype', detail: 'A transparent desktop character program with sprite animations, system tray controls, and status reminders.' },
   { title: 'Media Automation Pipeline', meta: 'Python, Playwright, Automation', status: 'Tool in Use', detail: 'An automated media processing and publishing tool with scheduled tasks, image resizing, and error logging.' },
@@ -368,11 +368,31 @@ export const labProjects = [
 ];
 
 export const experience = [
-  { period: '19 June to 3 July 2026', role: 'Embedded Systems Intern', org: 'Corporate Web Solutions', detail: 'Hands on experience with Embedded C, microcontrollers, GPIO interfacing, UART serial communication, buffers, and firmware architecture.' },
+  {
+    period: '19 June to 3 July 2026',
+    role: 'Embedded Systems Intern',
+    org: 'Corporate Web Solutions',
+    detail: 'Hands-on engineering internship focused on bare-metal Embedded C development and microcontroller firmware architecture. Configured GPIO peripherals, timer-driven PWM outputs, and implemented robust UART serial communication protocols with circular buffer handling and error checking.',
+    highlights: [
+      'Developed modular C drivers for digital sensors and actuator control',
+      'Implemented serial buffer management to prevent frame drops during high-frequency telemetry',
+      'Bench-tested firmware on target hardware using oscilloscopes and logic analyzers',
+    ],
+  },
 ];
 
 export const education = [
-  { period: 'Current', role: 'B.E. Robotics and Automation Engineering', org: 'Government Engineering College, Gandhinagar, Gujarat Technological University', detail: 'Undergraduate degree focusing on robotics, control systems, embedded electronics, computer vision, and autonomous navigation.' },
+  {
+    period: 'Current (Graduating 2027)',
+    role: 'B.E. Robotics and Automation Engineering',
+    org: 'Government Engineering College, Gandhinagar, Gujarat Technological University',
+    detail: 'Undergraduate engineering degree focusing on autonomous navigation, embedded microcontrollers, power electronics, kinematics, and computer vision. Active hands-on lab practice in building functional mobile robots, robotic arms, and custom PCBs.',
+    highlights: [
+      'Core coursework: Robot Kinematics, Control Systems, Microcontrollers & Interfacing, Computer Vision',
+      'Laboratory practicals: ROS 2 simulation & physical testing, sensor fusion (LiDAR + IMU), PID control tuning',
+      'Project work: SLAM mobile robot navigation, 3 DOF articulated robotic arm, custom DRV8848 PCB motor driver',
+    ],
+  },
 ];
 
 export const blogPosts = [

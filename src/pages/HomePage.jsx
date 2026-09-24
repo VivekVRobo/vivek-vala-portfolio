@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from '../router';
 import { usePortfolioContent } from '../hooks/usePortfolioContent';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import HeroCinema from '../components/HeroCinema';
 
 const siteSections = [
   {
@@ -19,11 +18,6 @@ const siteSections = [
     title: 'Experience',
     path: '/experience',
     description: 'Embedded systems internship, academic background, and practical engineering coursework.',
-  },
-  {
-    title: 'Lab Prototypes',
-    path: '/lab',
-    description: 'Experimental scripts, automation tools, desktop utilities, and early prototypes.',
   },
   {
     title: 'About Me',
@@ -73,12 +67,6 @@ export default function HomePage() {
     <div className="home-container">
       {/* Hero Section */}
       <section className="clean-hero" id="hero">
-        <HeroCinema
-          poster={site.heroCinema?.poster || '/hero-cinema-poster.webp'}
-          videoWebm={site.heroCinema?.enabled ? site.heroCinema?.webm : undefined}
-          videoMp4={site.heroCinema?.enabled ? site.heroCinema?.mp4 : undefined}
-          reduced={reduced}
-        />
         <div className="clean-hero__content">
           <span className="clean-tag">Robotics and Automation Engineering</span>
           <h1 className="clean-hero__name">Vivek Vala</h1>

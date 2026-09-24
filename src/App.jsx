@@ -9,7 +9,6 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
 const SkillsPage = lazy(() => import('./pages/SkillsPage'));
 const ProjectPage = lazy(() => import('./pages/ProjectPage'));
-const LabPage = lazy(() => import('./pages/LabPage'));
 const ExperiencePage = lazy(() => import('./pages/ExperiencePage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
@@ -35,7 +34,6 @@ function routeElement(path) {
   if (path === '/about') return <AboutPage />;
   if (path === '/projects') return <ProjectsPage />;
   if (path === '/skills') return <SkillsPage />;
-  if (path === '/lab') return <LabPage />;
   if (path === '/experience') return <ExperiencePage />;
   if (path === '/blog') return <BlogPage />;
   if (path === '/resume') return <ResumePage />;
@@ -55,7 +53,7 @@ export default function App() {
     const note = path.startsWith('/blog/') ? blogPosts.find((p) => p.slug === path.split('/')[2]) : null;
     if (project) return { title: `${project.title} — ${site.name}`, description: project.summary, type: 'article', found: true };
     if (note) return { title: `${note.title} — ${site.name}`, description: note.excerpt, type: 'article', found: true };
-    const known = ['/', '/about', '/projects', '/skills', '/lab', '/experience', '/blog', '/resume', '/contact', '/studio'].includes(path);
+    const known = ['/', '/about', '/projects', '/skills', '/experience', '/blog', '/resume', '/contact', '/studio'].includes(path);
     return { title: path === '/' ? `${site.name} — ${site.role}` : `${pretty(path.split('/').filter(Boolean).pop() || 'Portfolio')} — ${site.name}`, description: site.strapline, type: 'website', found: known };
   }, [path, projects, blogPosts, site]);
 

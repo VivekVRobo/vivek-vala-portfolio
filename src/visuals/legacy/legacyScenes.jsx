@@ -337,25 +337,66 @@ export function QuietArchitecture({ route }) {
 
 export function PrecisionInstallation({ position = [0, 0, 0], scale = 1 }) {
   const rig = useRef(null);
+  const ring1Ref = useRef(null);
+  const ring2Ref = useRef(null);
+  const ring3Ref = useRef(null);
+  const coreRef = useRef(null);
+
   useFrame((state) => {
-    if (!rig.current) return;
-    rig.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.16) * 0.08;
-    rig.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.12) * 0.04;
+    const t = state.clock.elapsedTime;
+    const px = state.pointer.x;
+    const py = state.pointer.y;
+
+    if (rig.current) {
+      // Smooth interactive tilt following pointer
+      const targetRotY = Math.sin(t * 0.16) * 0.08 + px * 0.22;
+      const targetRotX = Math.sin(t * 0.12) * 0.04 - py * 0.16;
+      rig.current.rotation.y += (targetRotY - rig.current.rotation.y) * 0.05;
+      rig.current.rotation.x += (targetRotX - rig.current.rotation.x) * 0.05;
+    }
+
+    if (ring1Ref.current) ring1Ref.current.rotation.z = t * 0.22;
+    if (ring2Ref.current) ring2Ref.current.rotation.z = -t * 0.18;
+    if (ring3Ref.current) ring3Ref.current.rotation.z = t * 0.14;
+
+    if (coreRef.current) {
+      coreRef.current.rotation.y = t * 0.12;
+      coreRef.current.rotation.x = Math.sin(t * 0.3) * 0.08;
+    }
   });
+
   return <group position={position} scale={scale}>
     <Ground color={P.ivory} size={8.4} y={-2.7} />
     <group ref={rig} position={[2.4, 0.15, 0]}>
       <Pedestal position={[0, -2.1, 0]} size={[3.8, 0.22, 3.8]} color={P.white} />
       <Float speed={0.55} floatIntensity={0.15} rotationIntensity={0.025}>
-        <mesh castShadow><sphereGeometry args={[1.15, 64, 64]} /><Mat color={P.ivory} roughness={0.16} metalness={0.16} clearcoat={0.22} /></mesh>
-        <mesh scale={1.12}><icosahedronGeometry args={[1.15, 2]} /><meshBasicMaterial color={P.deep} wireframe transparent opacity={0.08} /></mesh>
+        <group ref={coreRef}>
+          <mesh castShadow><sphereGeometry args={[1.15, 64, 64]} /><Mat color={P.ivory} roughness={0.16} metalness={0.16} clearcoat={0.22} /></mesh>
+          <mesh scale={1.12}><icosahedronGeometry args={[1.15, 2]} /><meshBasicMaterial color={P.deep} wireframe transparent opacity={0.08} /></mesh>
+          <mesh scale={0.88}><octahedronGeometry args={[0.9, 0]} /><meshBasicMaterial color={P.clay} wireframe transparent opacity={0.15} /></mesh>
+        </group>
       </Float>
-      {[0, 1, 2].map((i) => <mesh key={i} rotation={[Math.PI / 2 + i * 0.34, i * 0.45, i * 0.18]}>
-        <torusGeometry args={[1.85 + i * 0.28, 0.028, 14, 180]} />
-        <Mat color={[P.sand, P.sage, P.clay][i]} roughness={0.22} metalness={0.3} clearcoat={0.18} />
-      </mesh>)}
+      {/* Precision measurement rings with counter-rotation */}
+      <group ref={ring1Ref} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh>
+          <torusGeometry args={[1.85, 0.026, 14, 180]} />
+          <Mat color={P.sand} roughness={0.22} metalness={0.3} clearcoat={0.18} />
+        </mesh>
+      </group>
+      <group ref={ring2Ref} rotation={[Math.PI / 2 + 0.34, 0.45, 0.18]}>
+        <mesh>
+          <torusGeometry args={[2.13, 0.024, 14, 180]} />
+          <Mat color={P.sage} roughness={0.22} metalness={0.3} clearcoat={0.18} />
+        </mesh>
+      </group>
+      <group ref={ring3Ref} rotation={[Math.PI / 2 + 0.68, 0.9, 0.36]}>
+        <mesh>
+          <torusGeometry args={[2.41, 0.022, 14, 180]} />
+          <Mat color={P.clay} roughness={0.22} metalness={0.3} clearcoat={0.18} />
+        </mesh>
+      </group>
     </group>
-    <SceneDust count={12} tint={P.sand} />
+    <SceneDust count={16} tint={P.sand} />
   </group>;
 }
 
@@ -364,7 +405,9 @@ export function HomeRig({ progress, reduced }) {
   const desired = useMemo(() => new THREE.Vector3(), []);
   useFrame((state) => {
     const t = reduced ? 0 : progress.current;
-    desired.set(0.4 + Math.sin(t * Math.PI) * 0.4, 0.85 - t * 0.35, 9.6 - t * 0.8);
+    const px = reduced ? 0 : state.pointer.x * 0.35;
+    const py = reduced ? 0 : state.pointer.y * 0.25;
+    desired.set(0.4 + Math.sin(t * Math.PI) * 0.4 + px, 0.85 - t * 0.35 + py, 9.6 - t * 0.8);
     state.camera.position.lerp(desired, reduced ? 1 : 0.05);
     state.camera.lookAt(target);
   });
@@ -393,13 +436,16 @@ export function ProjectRig({ scene = 'jarvis', reduced = false }) {
 
   useFrame((state) => {
     const t = reduced ? Math.round(progress.current * 4) / 4 : progress.current;
+    const px = reduced ? 0 : state.pointer.x * 0.45;
+    const py = reduced ? 0 : state.pointer.y * 0.3;
     const eased = t * t * (3 - 2 * t);
     end.set(...preset.end);
     desired.set(...preset.start).lerp(end, eased);
-    desired.y += Math.sin(t * Math.PI) * 0.48;
-    desired.x += Math.sin(t * Math.PI * 1.6) * 0.18;
+    desired.y += Math.sin(t * Math.PI) * 0.48 + py;
+    desired.x += Math.sin(t * Math.PI * 1.6) * 0.18 + px;
     target.set(...preset.target);
-    target.y += Math.sin(t * Math.PI * 1.5) * 0.14;
+    target.y += Math.sin(t * Math.PI * 1.5) * 0.14 + py * 0.2;
+    target.x += px * 0.2;
     state.camera.position.lerp(desired, reduced ? 1 : 0.055);
     state.camera.lookAt(target);
     const desiredFov = preset.fov + Math.sin(t * Math.PI) * 1.7;
@@ -412,8 +458,11 @@ export function ProjectRig({ scene = 'jarvis', reduced = false }) {
 
 export function StaticRig() {
   useFrame((state) => {
-    state.camera.position.lerp(new THREE.Vector3(0, 0.9, 9.4), 0.08);
-    state.camera.lookAt(0, 0, -2);
+    const px = state.pointer.x * 0.3;
+    const py = state.pointer.y * 0.2;
+    state.camera.position.lerp(new THREE.Vector3(px, 0.9 + py, 9.4), 0.06);
+    state.camera.lookAt(px * 0.2, py * 0.2, -2);
   });
   return null;
 }
+

@@ -106,6 +106,7 @@ export default function HeroCinema({
   reduced = false,
 }) {
   const videoRef = useRef(null);
+  const [posterError, setPosterError] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
 
@@ -121,8 +122,8 @@ export default function HeroCinema({
 
   return (
     <div className="hero-cinema" aria-hidden="true">
-      {/* Layer 1: Poster (always present) */}
-      {poster && (
+      {/* Layer 1: Poster (optional static fallback) */}
+      {poster && !posterError && (
         <img
           src={poster}
           alt=""
@@ -130,6 +131,7 @@ export default function HeroCinema({
           loading="eager"
           fetchPriority="high"
           draggable="false"
+          onError={() => setPosterError(true)}
         />
       )}
 

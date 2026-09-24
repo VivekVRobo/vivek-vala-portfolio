@@ -5,6 +5,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import { useScenePreference } from '../hooks/useScenePreference';
 import * as legacy from './legacy/legacyScenes';
+import OrbitInspector from './core/OrbitInspector';
 import LidarSlamWorld from './scenes/LidarSlamWorld';
 import KinematicArmWorld from './scenes/KinematicArmWorld';
 import PoseSkeletonWorld from './scenes/PoseSkeletonWorld';
@@ -28,7 +29,9 @@ function Scene({ route, reduced }) {
   if (route === '/') {
     return (
       <>
-        <legacy.PrecisionInstallation />
+        <OrbitInspector enabled={true} springSpeed={3.2}>
+          <legacy.PrecisionInstallation />
+        </OrbitInspector>
         <legacy.HomeRig progress={progress} reduced={reduced} />
       </>
     );
@@ -71,7 +74,9 @@ function Scene({ route, reduced }) {
 
   return (
     <>
-      {world}
+      <OrbitInspector enabled={route.startsWith('/projects/')} springSpeed={3.6}>
+        {world}
+      </OrbitInspector>
       {route.startsWith('/projects/') ? (
         <legacy.ProjectRig scene={scene} reduced={reduced} />
       ) : (
@@ -81,20 +86,24 @@ function Scene({ route, reduced }) {
   );
 }
 
+function isMobileDevice() {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(max-width: 768px)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
 function shouldUseFallback() {
   if (typeof window === 'undefined') return false;
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   return Boolean(
     connection?.saveData ||
-    (navigator.deviceMemory && navigator.deviceMemory <= 2) ||
-    (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
-    window.matchMedia('(max-width: 480px)').matches
+    (navigator.deviceMemory && navigator.deviceMemory <= 2)
   );
 }
 
 export default function SceneCanvas({ route }) {
   const reduced = useReducedMotion();
   const { enabled } = useScenePreference();
+  const isMobile = isMobileDevice();
 
   if (!enabled || shouldUseFallback()) {
     return (
@@ -113,21 +122,24 @@ export default function SceneCanvas({ route }) {
     <div className="scene-canvas" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0.9, 9.6], fov: 40 }}
-        dpr={[1, 1.5]}
-        shadows
-        gl={{ antialias: true, powerPreference: 'high-performance' }}
+        dpr={isMobile ? [1, 1] : [1, 1.5]}
+        shadows={!isMobile}
+        gl={{
+          antialias: !isMobile,
+          powerPreference: isMobile ? 'default' : 'high-performance'
+        }}
       >
         <color attach="background" args={[P.white]} />
         <fog attach="fog" args={[P.white, 12, 52]} />
         <ambientLight intensity={1.55} />
         <hemisphereLight intensity={0.55} color="#fff8ee" groundColor="#ddd6cc" />
         <directionalLight
-          castShadow
+          castShadow={!isMobile}
           position={[7, 10, 8]}
           intensity={2.35}
           color="#fff5e3"
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
+          shadow-mapSize-width={isMobile ? 512 : 1024}
+          shadow-mapSize-height={isMobile ? 512 : 1024}
           shadow-camera-far={28}
           shadow-camera-left={-12}
           shadow-camera-right={12}
@@ -137,9 +149,9 @@ export default function SceneCanvas({ route }) {
         <directionalLight position={[-6, 5, 0]} intensity={0.95} color="#d7e3e7" />
         <ContactShadows
           position={[0, -2.55, 0]}
-          opacity={0.18}
+          opacity={isMobile ? 0.12 : 0.18}
           scale={26}
-          blur={2.2}
+          blur={isMobile ? 1.5 : 2.2}
           far={8}
           color="#8b7b67"
         />
@@ -148,3 +160,4 @@ export default function SceneCanvas({ route }) {
     </div>
   );
 }
+

@@ -1,12 +1,17 @@
 import { blogPosts, capabilities, education, experience, labProjects, projects, site } from './site';
+import { applyProjectTruthOverrides } from './projectTruthOverrides';
 
 export const CONTENT_KEY = 'vivek-portfolio-content-v6-clean';
 const LEGACY_KEYS = ['vivek-portfolio-content-v4', 'vivek-portfolio-content-v3', 'vivek-portfolio-content-v2'];
-export const defaultContent = { site, projects, labProjects, experience, education, blogPosts, capabilities };
+const safeProjects = applyProjectTruthOverrides(projects);
+export const defaultContent = { site, projects: safeProjects, labProjects, experience, education, blogPosts, capabilities };
 
 function mergeProjectDefaults(savedProjects = []) {
   const savedBySlug = new Map(savedProjects.map((p) => [p.slug, p]));
-  return projects.map((base) => ({ ...base, ...(savedBySlug.get(base.slug) || {}) })).concat(savedProjects.filter((p) => !projects.some((base) => base.slug === p.slug)));
+  const merged = safeProjects
+    .map((base) => ({ ...base, ...(savedBySlug.get(base.slug) || {}) }))
+    .concat(savedProjects.filter((p) => !safeProjects.some((base) => base.slug === p.slug)));
+  return applyProjectTruthOverrides(merged);
 }
 
 export function loadContent() {
@@ -30,7 +35,8 @@ export function loadContent() {
 }
 
 export function saveContent(data) {
-  localStorage.setItem(CONTENT_KEY, JSON.stringify(data));
+  const safeData = { ...data, projects: applyProjectTruthOverrides(data.projects || safeProjects) };
+  localStorage.setItem(CONTENT_KEY, JSON.stringify(safeData));
   window.dispatchEvent(new Event('portfolio-content-change'));
 }
 export function resetContent() {
